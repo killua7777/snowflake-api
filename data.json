@@ -1,0 +1,32 @@
+{
+    "matieres": [
+        ["0", "ALGO, BACK-END"],
+        ["1", "UX, UI, DESIGN"],
+        ["2", "INTEGRATION"],
+        ["3", "IMPROVISATION"],
+        ["4", "API, ENV"]
+    ],
+    "eleves": [
+        ["0", "Fares"],
+        ["1", "Gregory"],
+        ["2", "Yacine"],
+        ["3", "Dany"],
+        ["4", "Mac"],
+        ["5", "Maroua"],
+        ["6", "Baptiste"],
+        ["7", "Arthur I."],
+        ["8", "Olivier"],
+        ["9", "Kane"],
+        ["10", "Maya"],
+        ["11", "Hava"],
+        ["12", "Arthur P."]
+    ],
+    "intervenants": [
+        ["0", "DANDOY Loïc", "0"],
+        ["1", "DACQUET Jean-Baptiste", "1"],
+        ["2", "FENIES Simala", "2"],
+        ["3", "L.VITTI Franck", "3"],
+        ["4", "SAINT-ROCH Loïc", "4"]
+    ],
+    "notes": []
+}
