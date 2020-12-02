@@ -1,41 +1,32 @@
-// Load the Snowflake Node.js driver.
-var snowflake = require('snowflake-sdk');
-var { genere_notes } = require('./outils')
+var { eleves, intervenants, matieres, notes } = require('./outils')
+const Snow = require('./Snowflake')
 
-// Create a Connection object that we can use later to connect.
-var connection = snowflake.createConnection( {
-    account: "qn87002.eu-central-1",
-    username: "Roberto7",
-    password: "Roberto@7",
-    database: "UNIVERSITE"
-    }
-);
+// Instance de la classe avec les paramètres de connexion
+let snow = new Snow("qn87002.eu-central-1", "Roberto7", "Roberto@7", "UNIVERSITE")
 
-// Try to connect to Snowflake, and check whether the connection was successful.
-connection.connect(
-    function (err, conn) {
-        if (err) {
-            console.error('Unable to connect: ' + err.message)
-        }
-        else {
-            console.log('Successfully connected to Snowflake.')
-        }
-    }
-)
+// Teste la connexion
+snow.connect()
 
-// Insertion dans une table
-let sqlText = 'insert into notes_intervenant(ID, NOTE, ID_ELEVE, ID_INTERVENANT) values(?, ?, ?, ?)'
-const notes = genere_notes()
-// console.log(notes)
-// process.exit(1)
-connection.execute({
-    sqlText: sqlText,
-    binds: notes,
-    complete: function (err, stmt, rows) {
-        if (err) {
-            console.error('Failed to execute statement due to the following error: ' + err.message)
-        } else {
-            console.log('Successfully executed statement: ' + stmt.getSqlText())
-        }
-    }
-})
+// Insére des éléments dans la table MATIERES
+snow.query("insert into matieres(ID, NOM) values(?, ?)", matieres)
+
+// Insére des éléments dans la table INTERVENANTS
+snow.query("insert into intervenants(ID, NOM, ID_MATIERE) values(?, ?, ?)", intervenants)
+
+// Insére des éléments dans la table ELEVES
+snow.query("insert into eleves(ID, NOM) values(?, ?)", eleves)
+
+// Insére des éléments dans la table NOTES_INTERVENANT
+let sqlText = "insert into notes_intervenant(ID, NOTE, ID_ELEVE, ID_INTERVENANT) values(?, ?, ?, ?)"
+snow.query(sqlText, notes)
+
+
+// Requête pour selectionner les éléments voulus
+sqlText = "select * from notes_intervenant where NOTE > ?"
+const filter = [8]
+snow.query(sqlText, filter)
+snow.showResult()
+
+// Met fin à la connexion
+// Ne marche pas car async
+// snow.close()
