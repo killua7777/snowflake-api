@@ -18,7 +18,7 @@ snow.query("insert into eleves(ID, NOM) values(?, ?)", eleves)
 
 // Insére des éléments dans la table NOTES_INTERVENANT
 let sqlText = "insert into notes_intervenant(ID, NOTE, ID_ELEVE, ID_INTERVENANT) values(?, ?, ?, ?)"
-snow.query(sqlText, notes)
+snow.query(sqlText, notes())
 
 
 // Requête pour selectionner les éléments voulus

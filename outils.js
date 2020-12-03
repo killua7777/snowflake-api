@@ -9,7 +9,7 @@ let fichier = fs.readFileSync('data.json')
 let data = JSON.parse(fichier)
 
 // export des données sous forme de variable pour les utilisées dans un autre fichier
-exports.genere_notes = function() {
+exports.notes = function () {
     let notes = []
     data.eleves.forEach(eleve => {
         data.intervenants.forEach(intervenant => {
