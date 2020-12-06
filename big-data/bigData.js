@@ -3,7 +3,7 @@ const Snow = require('./../Snowflake')
 
 
 // Instance de la classe avec les paramètres de connexion
-let snow = new Snow("qn87002.eu-central-1", "Roberto7", "Roberto@7", "UNIVERSITE")
+let snow = new Snow("qn87002.eu-central-1", "Roberto7", "Roberto@7", "UNIVERSITE_BIGDATA")
 
 // Teste la connexion
 snow.connect()
