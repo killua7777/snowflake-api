@@ -1,5 +1,5 @@
 // Module permettant de générer un id unique
-var uniqid = require('uniqid');
+var uniqid = require('uniqid')
 
 // Permet de lire et/ou écrire dans un fichier
 const fs = require('fs')
